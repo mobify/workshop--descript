@@ -1,0 +1,20 @@
+{>"global/base"/}
+
+{<contentBlock}
+    <div class="c-comments js-comments">
+        <h2 class="t-pdp__heading">Comments</h2>
+    </div>
+{/contentBlock}
+
+{<uiScripts}
+    <script>
+    // Note: Add any JavaScript that should be run on this page into
+    // app/pages/pdp/ui.js
+    (function(require) {
+        require(["global/ui", "pages/pdp/ui"], function(globalUI, pdpUI) {
+            globalUI();
+            pdpUI();
+        });
+    })(Adaptive.AMD.require);
+    </script>
+{/uiScripts}

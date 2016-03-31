@@ -1,0 +1,14 @@
+// Newsletter
+// ===
+//
+// 1. Legacy flexbox fix
+
+.c-newsletter {
+    display: flex;
+
+    .c-button {
+        display: block; // 1
+        flex: 0 0 auto;
+        margin-left: $small-h-space;
+    }
+}

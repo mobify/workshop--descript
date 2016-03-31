@@ -1,0 +1,26 @@
+// Button
+// ===
+
+.c-button {
+    @extend %button;
+}
+
+
+// Button Themes
+// ---
+
+.c-button.c--brand {
+    border: 0;
+
+    background-color: $brand-color;
+
+    color: white;
+}
+
+.c-button.c--accent {
+    border: 0;
+
+    background-color: $accent-color;
+
+    color: white;
+}

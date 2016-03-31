@@ -1,0 +1,51 @@
+{>"global/base"/}
+
+{<contentBlock}
+    {hero}
+
+    <div class="c-shipping-banner">
+        <img src="{shipping}" />
+    </div>
+
+    <div class="c-ad-space">
+    </div>
+
+    <div class="t-home__promo">
+        {discountBanner}
+    </div>
+
+    <div class="t-home__content">
+        <div class="c-tab">
+            <div class="c-tab__controls">
+                {#categories}
+                    <button class="c-tab__button u-unstyle js-tabs__header">{title}</button>
+                {/categories}
+            </div>
+
+            {#categories}
+                <div class="c-tab__section c-product-list js-tabs__sections">
+                    {#products}
+                        <a href="{href}" class="c-product-list__item">
+                            {image}
+                            <div class="c-tab__description">{title}</div>
+                            <div class="c-price">{price}</div>
+                        </a>
+                    {/products}
+                </div>
+            {/categories}
+        </div>
+    </div>
+{/contentBlock}
+
+{<uiScripts}
+    <script>
+    // Note: Add any JavaScript that should be run on this page into
+    // app/pages/home/ui.js
+    (function(require) {
+        require(["global/ui", "pages/home/ui"], function(globalUI, homeUI) {
+            globalUI();
+            homeUI();
+        });
+    })(Adaptive.AMD.require);
+    </script>
+{/uiScripts}

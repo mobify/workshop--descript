@@ -1,0 +1,21 @@
+{#header}
+    <header class="t-header">
+        <div class="t-header__menu">
+            <a class="c-button c--brand js-header-menu__link"></a>
+        </div>
+
+        <div class="t-header__logo">
+            <a href="{logoHref}">
+                <img src="{@getUrl path="img/logo.png" /}" alt="Merlins Potions">
+            </a>
+        </div>
+
+        <div class="t-header__cart">
+            <div class="c-cart-count">
+                <div class="c-cart-count__text">
+                    <span class="c-cart-count__number">{cartCount}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+{/header}

@@ -1,0 +1,46 @@
+// Footer
+// ===
+
+.t-footer {
+    text-align: center;
+
+    h3 {
+        font-family: $serif;
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    p {
+        margin: $v-space 0;
+
+        font-size: 12px;
+    }
+}
+
+
+// Footer: Form
+// ---
+
+.t-footer__form {
+    padding: $v-space $h-space;
+
+    .c-newsletter {
+        @include clearfix;
+
+        padding: $v-space 0;
+    }
+}
+
+
+// Footer: Fineprint
+// ---
+
+.t-footer__fineprint {
+    display: block;
+    padding: $v-space 0;
+
+    background: $grey-90;
+
+    color: $grey-55;
+    font-size: 12px;
+}

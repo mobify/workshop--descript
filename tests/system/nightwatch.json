@@ -1,0 +1,117 @@
+{
+    "src_folders": ["./tests/system"],
+    "output_folder": "${CIRCLE_TEST_REPORTS}/nightwatch",
+    "custom_commands_path": "./node_modules/nightwatch-commands/commands",
+    "custom_assertions_path": "./node_modules/nightwatch-commands/assertions",
+
+    "selenium": {
+        "start_process": true,
+        "server_path": "./node_modules/nightwatch-commands/selenium/selenium-server.jar",
+        "log_path": "./node_modules/nightwatch-commands/selenium/",
+        "host": "127.0.0.1",
+        "port": 4444,
+        "cli_args": {
+            "webdriver.chrome.driver": "./node_modules/nightwatch-commands/selenium/drivers/chromedriver"
+        }
+    },
+
+    "test_settings": {
+        "default": {
+            "globals" : {
+                "waitForConditionTimeout" : 60000
+            },
+            "launch_url": "http://localhost",
+            "selenium_host": "127.0.0.1",
+            "selenium_port": 4444,
+            "silent": true,
+            "output": true,
+            "screenshots": {
+                "enabled": false,
+                "path": ""
+            },
+            "desiredCapabilities": {
+                "browserName": "chrome",
+                "chromeOptions": {
+                    "args": [
+                        "--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_2 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A4449d Safari/9537.53",
+                        "--window-size=320,640",
+                        "--allow-running-insecure-content",
+                        "--test-type"
+                    ]
+                },
+                "javascriptEnabled": true,
+                "acceptSslCerts": true
+            }
+        },
+        "sauce-android" : {
+            "selenium" : {
+                "start_process" : false
+            },
+            "selenium_host" : "ondemand.saucelabs.com",
+            "selenium_port" : 80,
+            "username" : "${SAUCE_USERNAME}",
+            "access_key" : "${SAUCE_ACCESS_KEY}",
+            "use_ssl" : false,
+            "desiredCapabilities": {
+                "browserName": "chrome",
+                "platformName": "ANDROID",
+                "platformVersion": "4.4",
+                "deviceName": "",
+                "javascriptEnabled": true,
+                "acceptSslCerts": true
+            }
+        },
+        "sauce-ios" : {
+            "selenium" : {
+                "start_process" : false
+            },
+            "selenium_host" : "ondemand.saucelabs.com",
+            "selenium_port" : 80,
+            "username" : "${SAUCE_USERNAME}",
+            "access_key" : "${SAUCE_ACCESS_KEY}",
+            "use_ssl" : false,
+            "desiredCapabilities": {
+                "browserName": "Safari",
+                "platformName": "iOS",
+                "platformVersion": "8.2",
+                "deviceName": "iPhone Simulator",
+                "javascriptEnabled": true,
+                "acceptSslCerts": true
+            }
+        },
+        "android" : {
+            "launch_url" : "http://localhost:4723/wd/hub",
+            "selenium_port"  : 4723,
+            "selenium_host"  : "localhost",
+            "desiredCapabilities": {
+                "browserName": "chrome",
+                "platformName": "ANDROID",
+                "deviceName": "",
+                "javascriptEnabled": true,
+                "acceptSslCerts": true
+            }
+        },
+        "ios" : {
+            "launch_url" : "http://localhost:4723/wd/hub",
+            "selenium_port"  : 4723,
+            "selenium_host"  : "localhost",
+            "desiredCapabilities": {
+                "browserName": "Safari",
+                "platformName": "iOS",
+                "platformVersion": "8.1",
+                "deviceName": "",
+                "javascriptEnabled": true,
+                "acceptSslCerts": true
+            }
+        },
+        "components": {
+            "filter": "**/components/*"
+        },
+        "pages": {
+            "filter": "**/pages/*"
+        },
+        "workflows": {
+            "filter": "**/workflows/*"
+        }
+    }
+}

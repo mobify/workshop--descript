@@ -1,0 +1,29 @@
+.c-item {
+    @include clearfix;
+}
+
+.c-item__image {
+    float: left;
+    width: 35%;
+}
+
+.c-item__description {
+    float: left;
+    width: 65%;
+}
+
+.c-item__name {
+    display: block;
+    font-weight: bold;
+}
+
+.c-item__price {
+    color: $accent-color;
+    display: block;
+}
+
+.c-item__sku {
+    margin-top: $unit;
+    display: block;
+    font-size: 0.7em;
+}

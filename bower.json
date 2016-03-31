@@ -1,0 +1,17 @@
+{
+  "name": "merlins-potions-adaptive-2",
+  "version": "1.0.0",
+  "dependencies": {
+    "imageresize": "git://github.com/mobify/imageresize-client.git#1.0.2",
+    "fastclick": "git://github.com/mobify/fastclick.git#1.0.7",
+    "descript": "~1.0.0",
+    "deckard": "~1.0.0",
+    "dustjs-linkedin": "2.3.3",
+    "spline": "~1.0",
+    "level": "~0.1.0",
+    "hijax": "0.2.0"
+  },
+  "resolutions": {
+    "requirejs": "2.1.14"
+  }
+}

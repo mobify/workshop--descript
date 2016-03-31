@@ -1,0 +1,45 @@
+{>"global/base"/}
+
+{<contentBlock}
+    <h2 class="t-order-confirmation__title">{title}</h2>
+    <p class="t-order-confirmation__transaction-number">{transactionNumber}</p>
+
+    {#items}
+        <div class="c-item">
+            <div class="c-item__image">
+                <img src="{image}" />
+            </div>
+            <div class="c-item__description">
+                <span class="c-item__name">{name}</span>
+                <span class="c-item__price">{price}</span>
+                <span class="c-item__sku">{sku}</span>
+            </div>
+        </div>
+    {/items}
+
+    <div class="t-order-confirmation__summary">
+    {#summary}
+        <div class="t-order-confirmation__summary-item">
+            <div class="t-order-confirmation__summary-item-name">
+                {name}
+            </div>
+            <div class="t-order-confirmation__summary-item-amount">
+                {amount}
+            </div>
+        </div>
+    {/summary}
+    </div>
+{/contentBlock}
+
+{<uiScripts}
+    <script>
+    // Note: Add any JavaScript that should be run on this page into
+    // app/pages/order-confirmation/ui.js
+    (function(require) {
+        require(["global/ui", "pages/order-confirmation/ui"], function(globalUI, orderConfirmationUI) {
+            globalUI();
+            orderConfirmationUI();
+        });
+    })(Adaptive.AMD.require);
+    </script>
+{/uiScripts}

@@ -1,0 +1,21 @@
+{>"global/base"/}
+
+{<contentBlock}
+    <div class="t-category__title">
+        {title}
+    </div>
+    {listing}
+{/contentBlock}
+
+{<uiScripts}
+    <script>
+    // Note: Add any JavaScript that should be run on this page into
+    // app/pages/category/ui.js
+    (function(require) {
+        require(["global/ui", "pages/category/ui"], function(globalUI, categoryUI) {
+            globalUI();
+            categoryUI();
+        });
+    })(Adaptive.AMD.require);
+    </script>
+{/uiScripts}

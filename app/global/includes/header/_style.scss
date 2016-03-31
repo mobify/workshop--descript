@@ -1,0 +1,47 @@
+// Header
+// ===
+
+.t-header {
+    display: flex;
+    justify-content: space-between;
+    padding: $v-space $h-space;
+}
+
+
+// Header: Logo
+// ---
+//
+// 1. Height comes from the logo img tag
+// 2. Legacy flexbox fix
+
+.t-header__logo {
+    padding: 0 $h-space;
+
+    a {
+        display: block; // 2
+        height: 39px; //1
+    }
+
+    img {
+        max-height: 100%;
+    }
+}
+
+// Header: Menu
+// ---
+
+.t-header__menu {
+    display: flex;
+    justify-content: space-between;
+
+    .c-button {
+        display: block;
+        min-width: 45px;
+        min-height: 45px;
+
+        background-image: url('/img/menu.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 25px auto;
+    }
+}

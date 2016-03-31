@@ -1,0 +1,14 @@
+{
+    "activeProfile": "preview",
+    "profiles": {
+        "preview": {
+            "bundleUrl": "http://localhost:8080/adaptive.js",
+            "siteUrl": "http://training.merlinspotions.com"
+        },
+        "production": {
+            "bundleUrl": "",
+            "siteUrl": "http://training.merlinspotions.com",
+            "production": true
+        }
+    }
+}

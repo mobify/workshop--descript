@@ -1,0 +1,26 @@
+// Product List
+// ===
+
+.c-product-list {
+    @include clearfix;
+
+    font-family: $serif;
+    text-align: center;
+}
+
+
+// Product List Item
+// ---
+
+.c-product-list__item {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: $v-space $small-h-space;
+
+    color: $grey-20;
+
+    &:nth-child(odd) {
+        clear: both;
+    }
+}

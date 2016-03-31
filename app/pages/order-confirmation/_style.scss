@@ -1,0 +1,33 @@
+.t-order-confirmation__title {
+    padding: $unit*2;
+    padding-bottom: $unit;
+}
+
+.t-order-confirmation__summary {
+    margin: $unit 0;
+    padding: $unit 0;
+    border-top: 1px solid $neutral-30;
+    border-bottom: 1px solid $neutral-30;
+}
+
+.t-order-confirmation__summary-item {
+    @include clearfix;
+}
+
+.t-order-confirmation__summary-item-name {
+    float: left;
+    width: 75%;
+    padding-right: $unit/2;
+
+    text-align: right;
+}
+
+.t-order-confirmation__summary-item-amount {
+    color: $accent-color;
+}
+
+.t-order-confirmation__transaction-number {
+    margin-left: $unit*2;
+    padding-bottom: $unit*2;
+    font-size: 0.9em;
+}

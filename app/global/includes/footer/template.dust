@@ -1,0 +1,10 @@
+{#footer}
+    <footer class="t-footer" role="contentinfo">
+        <div class="t-footer__form">
+            {newsletter}
+        </div>
+        <div class="t-footer__fineprint">
+            {copyright}
+        </div>
+    </footer>
+{/footer}

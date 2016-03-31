@@ -1,0 +1,22 @@
+{
+  "name": "level",
+  "description": "A lightweight, consistent foundation for mobile stylesheets",
+  "version": "0.1.0",
+  "main": "level.scss",
+  "author": "Mobify",
+  "ignore": [
+    "CHANGELOG.md",
+    "package.json",
+    "test.html"
+  ],
+  "homepage": "https://github.com/mobify/level",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "27c65069b5842eedd77a48673159c0c740a3701e"
+  },
+  "_source": "git://github.com/mobify/level.git",
+  "_target": "~0.1.0",
+  "_originalSource": "level"
+}

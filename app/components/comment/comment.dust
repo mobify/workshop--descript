@@ -1,0 +1,15 @@
+<div class="c-comment">
+    {#content}
+        <div class="c-comment__rating">{rating}</div>
+        <h3>{title}</h3>
+        <span class="c-comment__author">{author}</span>
+
+        <ul class="c-comment__stats">
+            {#stats}
+                <li class="c-comment__stat">{.}</li>
+            {/stats}
+        </ul>
+
+        <div class="c-comment__body">{body}</div>
+    {/content}
+</div>

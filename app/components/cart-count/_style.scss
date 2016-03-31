@@ -1,0 +1,38 @@
+// Cart Count
+// ===
+//
+// 1. Relative for absolutely positioned .c-cart-count__number
+// 2. Width must account for the presence of the number badge
+
+.c-cart-count {
+    position: relative; // 1
+
+    width: 40px; // 2
+    height: 40px;
+
+    background: url('/img/cauldron.png') top left no-repeat;
+}
+
+
+// Card Count: Number
+// ---
+//
+// 1. Absolutely positioned number badge relative to the parent .c-cart-count
+
+.c-cart-count__number {
+    position: absolute; // 1
+    top: 0;
+    right: 0;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+    background-color: $accent-color;
+
+    color: #fff;
+    font-family: $oswald;
+    font-weight: 300;
+    text-align: center;
+}

@@ -1,0 +1,36 @@
+// Heading
+// ---
+
+.c-heading {
+    display: block;
+
+    font-weight: bold;
+
+    &.c--1 {
+        @extend %h1;
+    }
+
+    &.c--2 {
+        @extend %h2;
+    }
+
+    &.c--3 {
+        @extend %h3;
+    }
+
+    &.c--4 {
+        @extend %h4;
+    }
+
+    &.c--5 {
+        @extend %h5;
+    }
+
+    &.c--6 {
+        @extend %h6;
+    }
+
+    &.c--smallest {
+        font-size: $smallest-font-size;
+    }
+}

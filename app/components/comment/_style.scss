@@ -1,0 +1,23 @@
+.c-comment {
+    margin: $v-space $h-space;
+    padding: $v-space 0;
+    border-top: 1px solid $grey-90;
+}
+
+.c-comment__title {
+    margin: $v-space 0;
+
+    font-family: $sans-serif;
+}
+
+.c-comment__author {
+    font-style: italic;
+}
+
+.c-comment__stats {
+    padding: $v-space 0;
+}
+
+.c-comment__stat {
+    font-size: $small-font-size;
+}
