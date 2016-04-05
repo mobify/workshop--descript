@@ -56,7 +56,7 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
             // Use Descript to manipulate the desktop scripts. Please see
             // https://github.com/mobify/descript for detailed documentation.
             descript = Descript.init();
-            descript.addSearcher('selector', function ($script, query) {
+            descript.addSearcher('selector', function($script, query) {
                 return !!$script.filter(query).length;
             });
 
