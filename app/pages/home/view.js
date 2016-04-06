@@ -4,52 +4,19 @@
 
 define([
     '$',
-    'resizeImages',
     'global/baseView',
-    'dust!pages/home/template',
-    'descript',
+    'dust!pages/home/template'
 ],
-function($, ResizeImages, baseView, template, Descript) {
-    var descript;
-    var defaultOptions = {
-        maxWidth: 400,
-        maxHeight: 400
-    };
+function($, baseView, template) {
     return {
         template: template,
         extend: baseView,
-        preProcess: function(context) {
-            if (baseView.preProcess) {
-                context = baseView.preProcess(context);
-
-                descript = Descript.init();
-                descript.remove({
-                    src: ['desktop-only.js']
-                });
-
-                if (descript.exists({src: 'mobile-first.js'})) {
-                    descript.insertScript({src: 'mobile-first.js'}, function() {
-                        console.log('special script for home page, must run after first script');
-                    });
-                }
-            }
-            return context;
-        },
         context: {
             templateName: 'home',
             hero: function() {
-                var $hero = $('.hero');
-                ResizeImages.resize($hero, defaultOptions);
-                return $hero;
+                return $('.hero');
             },
             shipping: function() {
-                var $freeShipping = $('.free-shipping');
-                var options = {
-                    sourceAttribute: 'data-mobile-src',
-                    quality: 50
-                };
-                $.extend(options, defaultOptions);
-                ResizeImages.resize($freeShipping, options);
                 return $('.free-shipping').attr('x-src');
             },
             discountBanner: function() {

@@ -56,18 +56,6 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
             // Use Descript to manipulate the desktop scripts. Please see
             // https://github.com/mobify/descript for detailed documentation.
             descript = Descript.init();
-            descript.addSearcher('selector', function($script, query) {
-                return !!$script.filter(query).length;
-            });
-
-            descript.add('urgent', {
-                src: ['mobile-first.js']
-            });
-
-            descript.add('defer', {
-                contains: ['//www.google-analytics.com/analytics'],
-                selector: '.last'
-            });
 
             return context;
         },
@@ -102,12 +90,6 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
             },
             desktopScripts: function() {
                 return descript.get('default');
-            },
-            urgentScripts: function() {
-                return descript.get('urgent');
-            },
-            deferScripts: function() {
-                return descript.get('defer');
             }
         }
     };

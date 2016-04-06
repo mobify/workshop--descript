@@ -7,9 +7,6 @@
         <img src="{shipping}" />
     </div>
 
-    <div class="c-ad-space">
-    </div>
-
     <div class="t-home__promo">
         {discountBanner}
     </div>
