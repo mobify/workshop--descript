@@ -16,9 +16,9 @@ On the desktop version of the site, there is a script, all it contains is a `con
 
 In terminal run `grunt preview -auto` and the Mobify Preview page will open up. Click `Preview`. Once you arrive at Merlin's Potions, open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
-<img src="/static/img/console-logs.png?raw=true" height="250"/>
+<img src="/static/img/console-logs.png?raw=true" height="200"/>
 
-The message we are concerned with first is "You are on desktop, this script should not run on mobile". Lets reomve that script.
+The message we are concerned with first is "You are on desktop, this script should not run on mobile". Lets remove that script.
 
 ### Remove The Script
 
@@ -28,7 +28,7 @@ On desktop this script is called like this:
 <script src="/js/desktop-only.js"></script>
 ```
 
-So we will use the `src` of the script to remove it. In `app/global/baseView.js` inside of the `preProcess` funtion, immediately afte the `descript = Descript.init();` line add the following:
+So we will use the `src` of the script to remove it. In `app/global/baseView.js` inside of the `preProcess` function, immediately after the `descript = Descript.init();` line add the following:
 
 ``` javascript
 descript.remove({
@@ -37,7 +37,7 @@ descript.remove({
 ```
 The `src` used in this case does not have to be exact, it only needs to contain the string that you choose to find it by. Be careful to make your string unique enough that it only selects those scripts you actually want removed.
 
-If we preview the project now, the script should no longer be activating, and you should no be able to see that output in the console.
+If we preview the project now, the script should no longer be activating, and you should not be able to see that output in the console.
 
 
 ##Continue to Step 2
