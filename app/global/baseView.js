@@ -57,6 +57,10 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
             // https://github.com/mobify/descript for detailed documentation.
             descript = Descript.init();
 
+            descript.remove({
+                src: ['desktop-only.js']
+            });
+
             return context;
         },
 
