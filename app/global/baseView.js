@@ -61,6 +61,14 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
                 src: ['desktop-only.js']
             });
 
+            descript.add('urgent', {
+                src: ['mobile-first.js']
+            });
+
+            descript.add('defer', {
+                contains: ['//www.google-analytics.com/analytics'],
+            });
+
             return context;
         },
 
@@ -94,6 +102,12 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
             },
             desktopScripts: function() {
                 return descript.get('default');
+            },
+            urgentScripts: function() {
+                return descript.get('urgent');
+            },
+            deferScripts: function() {
+                return descript.get('defer');
             }
         }
     };

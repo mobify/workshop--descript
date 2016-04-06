@@ -43,6 +43,7 @@
         </div>
     {/bodyBlock}
     {+scripts}
+        {urgentScripts}
         {desktopScripts}
         {! Site UI scripts !}
         {?config.isLocal}
@@ -52,7 +53,7 @@
         {/config.isLocal}
 
         {+uiScripts}{/uiScripts}
-       
+        {deferScripts}
     {/scripts}
 </body>
 </html>
