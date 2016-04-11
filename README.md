@@ -12,13 +12,13 @@ You will see descript being initialized inside of the `preProcess` function. Cur
 
 ### Preview Project
 
-On the desktop version of the site, there is a script, all it contains is a `console.log`. Lets preview the project and see what the `console.log` says.
+On the desktop version of the site, there is a script, all it contains is a `console.log`. Let's preview the project and see what the `console.log` says.
 
 In terminal run `grunt preview -auto` and the Mobify Preview page will open up. Click `Preview`. Once you arrive at Merlin's Potions, open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
 <img src="/static/img/console-logs.png?raw=true" height="200"/>
 
-The message we are concerned with first is "You are on desktop, this script should not run on mobile". Lets remove that script.
+The message we are concerned with first is "You are on desktop, this script should not run on mobile". Let's remove that script.
 
 ### Remove The Script
 
