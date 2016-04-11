@@ -1,92 +1,36 @@
-# Step 1: Insert a Script
+# Step 4: Create a Custom Filter
 
-For this task we are going to insert a script immediately after another one. 
-We have a script that we'd like to insert only for the category pages, so we now have to include descript in `/app/pages/category/view.js`.
+For this task we are going to create a custome filter to locate scripts by. In this case, we can add clesses to our scripts when they are included in our desktop code, and we will select those scripts with those classes.
 
 ## Task
 
-### Include Descript
+### descript.addSearcher
 
-Open up `/app/pages/category/view.js` and include descript in the define array at the top, then add it as a variable in the function. This works because the path for 'descript' has already been defined inside of `/app/config/adaptation.js`.
+Descript's `addSearcher` function takes two arguments, the name of the customer searcher as a string, and a function that will return true or false. The function also takes two arguments, the current script to be evaluated, and the query. 
+
+Inside of the function, you can write your own logic to decide whether a script meets the criteria. A common usage of this would be to select on scripts according to their class names.
+
+In `/app/global/baseView` below `descript = Descript.init();` in the `preProcess` function add the  following:
 
 ``` javascript
-define([
-    '$',
-    'global/baseView',
-    'dust!pages/category/template',
-    'descript'
-],
-function($, BaseView, template, Descript) {
+descript.addSearcher('selector', function($script, query) {
+    return !!$script.filter(query).length;
+});
 ```
 
-### Create preProcess Function
-Inside this first function, we are going to make a new one. Call it `preProcess`.
+Now, when we want to select on a script, we can use {selector: "class-name"} as our crieteria. 
 
+### Move a Script last By Class 
 
-``` javascript
-preProcess: function(context) {
+On desktop we have a script with the class "last", let's select it and move it into the "defer" container.
 
-},
-```
-
-We need to ensure that `baseView.preprocess` has run first and use the context returned from that. So we will ensure that from our new function. Then initialize descript.
+Let's add `selector: '.last'` as a criteria in our defer code. It should now look like this:
 
 ``` javascript
-preProcess: function(context) {
-    context = baseView.preProcess(context);
-
-    var descript = Descript.init(); 
-},
-```
-
-### descript.exists
-
-We're going to insert our new script immediately after the script with the `src='mobile-first.js'`. first we need to ensure that that script exists, We'll check that with the `descript.exists` function.
-``` javascript
-if (descript.exists({src: 'mobile-first.js'})) {
-  
-}
-```
-This will evaluate true, we will then use the `descript.insertScript` function. `insertScript` takes two arguments, the first is the script we wish to insert after - identified by src, or contains (or a custom search param whcih we will get into in the next part) - the second is the script, either inline, or a reference to it. We will write a simple inline script with a `console.log` in it.
-
-Put this code inside of your `preProcess` function, after initializing descript:
-
-``` javascript
-if (descript.exists({src: 'mobile-first.js'})) {
-    descript.insertScript({src: 'mobile-first.js'}, function() {
-        console.log('special script for category page, must run after first script');
-    });
-}
-```
-
-### Review
-
-The first part of your `/app/pages/category/view.js` should look something like this:
-
-``` javascript
-define([
-    '$',
-    'global/baseView',
-    'dust!pages/category/template',
-    'descript'
-],
-function($, BaseView, template, Descript) {
-    return {
-        template: template,
-        extend: BaseView,
-        preProcess: function(context) {
-            context = BaseView.preProcess(context);
-            var descript = Descript.init();
-
-            if (descript.exists({src: 'mobile-first.js'})) {
-                descript.insertScript({src: 'mobile-first.js'}, function() {
-                    console.log('special script for category page, must run after first script');
-                });
-            }
-            return context;
-        },
-    ...
-
+descript.add('defer', {
+    contains: ['//www.google-analytics.com/analytics'],
+    selector: '.last'
+});
 ```
 
 ### View the Result
@@ -94,8 +38,9 @@ function($, BaseView, template, Descript) {
 Let's preview the project and see what order the scripts are executing in now.
 
 In terminal run `grunt preview`.
+Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
-Visit `http://0.0.0.0:9000/books/` to checkout a category page. Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
+<img src="/mobify/workshop--descript/raw/step-4-create-custom-filter/static/img/insert-script.png?raw=true" height="100">
 
 
 ##Continue to Step 4
