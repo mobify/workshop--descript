@@ -42,14 +42,9 @@ Open up the developer tools and look at the console. You may have to refresh the
 
 <img src="/mobify/workshop--descript/raw/step-4-create-custom-filter/static/img/insert-script.png?raw=true" height="100">
 
+##Finished!
 
-##Continue to Step 4
+That's it, we're all done. To see the final product continue to the [completed-workshop](https://github.com/mobify/workshop--descript/blob/completed-workshop/README.md) branch.
 
-When you're ready to continue to Step 4, run the following command:
-
-```
-git reset --hard HEAD && git clean -df && git checkout step-4-create-custom-filter
-```
-
-Then, follow the directions in the [README](https://github.com/mobify/workshop--descript/blob/step-4-create-custom-filter/README.md) for the Step 4 branch.
+git reset --hard HEAD && git clean -df && git checkout completed-workshop
 
