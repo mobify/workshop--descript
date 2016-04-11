@@ -12,7 +12,7 @@ Descript adds each script to to the `default` container by default. Each script 
 
 We can see that these two scripts need to run in one order on desktop, and the opposite order on mobile. We're going to use descript's `add()` method. the first arguement to the `add()` method is a string, this will be the name of your bucket, the second argument is an object containing a reference to the script or scripts you would like added to that bucket. In this case we will select the script by it's `src` again. 
 
-In `/app/global/baseView.js` still inside of the `preProcess` function, and below the code we added in the last step, lets add the following:
+In `/app/global/baseView.js` still inside of the `preProcess` function, and below the code we added in the last step, let's add the following:
 
 ```
 descript.add('urgent', {
@@ -28,7 +28,7 @@ Still in `/app/global/baseView.js` scroll down and view the context that is bein
 
 <img src="/static/img/baseView-context.png?raw=true" height="250"/>
 
-You can see that we are selecting the `default` container scripts and returning them under the `desktopScripts` key. Lets create a new key called `urgentScripts`. Don't forget to add a comma after the closing brace of the `desktopScripts` key.
+You can see that we are selecting the `default` container scripts and returning them under the `desktopScripts` key. Let's create a new key called `urgentScripts`. Don't forget to add a comma after the closing brace of the `desktopScripts` key.
 
 ``` javascript
 desktopScripts: function() {
@@ -39,15 +39,15 @@ urgentScripts: function() {
 }
 ```
 
-Great, now lets call those scripts from the template file.
+Great, now let's call those scripts from the template file.
 Go to the `/app/global/base.dust` file and scroll down until you see where `{desktopScripts}` is being called.
 
 <img src="/static/img/template-scripts.png?raw=true" height="200"/>
 
-Just above `{desktopScripts}` lets add `{urgentScripts}`, this file gets executed in order, so this will ensure that `urgentScripts` will get executed first. 
+Just above `{desktopScripts}` add `{urgentScripts}`, this file gets executed in order, so this will ensure that `urgentScripts` will get executed first. 
 
 ### Preview Project
-Lets preview the project and see what order the scripts are executing in now.
+Preview the project and see what order the scripts are executing in now.
 
 In terminal run `grunt preview -auto` and the Mobify Preview page will open up. Click `Preview`. Once you arrive at Merlin's Potions, open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
@@ -57,7 +57,7 @@ We also have a script that we want to make sure goes last, this is the Google An
 
 This script is an inline script, so we cannot select it using the `src` instead we are going to be using descript's `contains` selector. We are also going to add it to a new container `defer` to ensure it is run last.
 
-Below our other code in the `preProcess` function in `/app/global/baseView.js` lets add:
+Below our other code in the `preProcess` function in `/app/global/baseView.js` let's add:
 
 ``` javascript
 descript.add('defer', {
@@ -75,7 +75,7 @@ deferScripts: function() {
 }
 ```
 
-Lets go back to the `app/global/base.dust` file. Add `{deferScripts}` as the last item inside of the scripts block.
+Let's go back to the `app/global/base.dust` file. Add `{deferScripts}` as the last item inside of the scripts block.
 
 ```
    {+scripts}
