@@ -1,4 +1,4 @@
-# Step 1: Change the Order of Scripts
+# Step 2: Change the Order of Scripts
 
 For this task we are going to organize our scripts into containers. You may create as many containers of scripts as needed. 
 
