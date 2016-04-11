@@ -1,99 +1,112 @@
-# Step 1: Change the Order of Scripts
+# Step 1: Insert a Script
 
-For this task we are going to organize our scripts into containers. You may create as many containers of scripts as needed. 
-
-Descript adds each script to to the `default` container by default. Each script can only be in one container, and adding it to a new container will remove it from any other container it is in.
+For this task we are going to insert a script immediately after another one. 
+We have a script that we'd like to insert only for the category pages, so we now have to include descript in `/app/pages/category/view.js`.
 
 ## Task
 
-### Add mobile-first Script to New Container
+### Include Descript
 
-<img src="/static/img/script-order.png?raw=true" height="50"/>
-
-We can see that these two scripts need to run in one order on desktop, and the opposite order on mobile. We're going to use descript's `add()` method. the first arguement to the `add()` method is a string, this will be the name of your bucket, the second argument is an object containing a reference to the script or scripts you would like added to that bucket. In this case we will select the script by it's `src` again. 
-
-In `/app/global/baseView.js` still inside of the `preProcess` function, and below the code we added in the last step, lets add the following:
-
-```
-descript.add('urgent', {
-    src: ['mobile-first.js']
-});
-```
-
-If you preview your project now you will notice that the `mobile-first.js` script no longer runs, this is because we are not selecting and outputting that container.
-
-### Return The New Container Within Context
-
-Still in `/app/global/baseView.js` scroll down and view the context that is being returned.
-
-<img src="/static/img/baseView-context.png?raw=true" height="250"/>
-
-You can see that we are selecting the `default` container scripts and returning them under the `desktopScripts` key. Lets create a new key called `urgentScripts`. Don't forget to add a comma after the closing brace of the `desktopScripts` key.
+Open up `/app/pages/category/view.js` and include descript in the define array at the top, then add it as a variable in the function. This works because the path for 'descript' has already been defined inside of `/app/config/adaptation.js`.
 
 ``` javascript
-desktopScripts: function() {
-...
+define([
+    '$',
+    'global/baseView',
+    'dust!pages/category/template',
+    'descript'
+],
+function($, BaseView, template, Descript) {
+```
+
+### Create preProcess Function
+Inside this first function, we are going to make a new one. Call it `preProcess`.
+
+
+``` javascript
+preProcess: function(context) {
+
 },
-urgentScripts: function() {
-    return descript.get('urgent');
+```
+
+We need to ensure that `baseView.preprocess` has run first and use the context returned from that. So we will ensure that from our new function. Then initialize descript.
+
+``` javascript
+preProcess: function(context) {
+    context = baseView.preProcess(context);
+
+    var descript = Descript.init(); 
+},
+```
+
+### descript.exists
+
+We're going to insert our new script immediately after the script with the `src='mobile-first.js'`. first we need to ensure that that script exists, We'll check that with the `descript.exists` function.
+``` javascript
+if (descript.exists({src: 'mobile-first.js'})) {
+  
+}
+```
+This will evaluate true, we will then use the `descript.insertScript` function. `insertScript` takes two arguments, the first is the script we wish to insert after - identified by src, or contains (or a custom search param whcih we will get into in the next part) - the second is the script, either inline, or a reference to it. We will write a simple inline script with a `console.log` in it.
+
+Put this code inside of your `preProcess` function, after initializing descript:
+
+``` javascript
+if (descript.exists({src: 'mobile-first.js'})) {
+    descript.insertScript({src: 'mobile-first.js'}, function() {
+        console.log('special script for category page, must run after first script');
+    });
 }
 ```
 
-Great, now lets call those scripts from the template file.
-Go to the `/app/global/base.dust` file and scroll down until you see where `{desktopScripts}` is being called.
+### Review
 
-<img src="/static/img/template-scripts.png?raw=true" height="200"/>
-
-Just above `{desktopScripts}` lets add `{urgentScripts}`, this file gets executed in order, so this will ensure that `urgentScripts` will get executed first. 
-
-### Preview Project
-Lets preview the project and see what order the scripts are executing in now.
-
-In terminal run `grunt preview -auto` and the Mobify Preview page will open up. Click `Preview`. Once you arrive at Merlin's Potions, open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
-
-### Move GA Script Last
-
-We also have a script that we want to make sure goes last, this is the Google Analytics script. It is best-practice to run GA scripts as the last thing, but on Merlin's Potions they have chosen to run it as the first script.
-
-This script is an inline script, so we cannot select it using the `src` instead we are going to be using descript's `contains` selector. We are also going to add it to a new container `defer` to ensure it is run last.
-
-Below our other code in the `preProcess` function in `/app/global/baseView.js` lets add:
+The first part of your `/app/pages/category/view.js` should look something like this:
 
 ``` javascript
-descript.add('defer', {
-    contains: ['//www.google-analytics.com/analytics'],
-});
-```
+define([
+    '$',
+    'global/baseView',
+    'dust!pages/category/template',
+    'descript'
+],
+function($, BaseView, template, Descript) {
+    return {
+        template: template,
+        extend: BaseView,
+        preProcess: function(context) {
+            context = BaseView.preProcess(context);
+            console.log('in');
 
-`contains` will select any script which contains the string you pass in, so make sure it is unique enough to only select the script/s you want added.   
+            var descript = Descript.init();
 
-Again, scroll down and create a new key inside of context:
-
-``` javascript
-deferScripts: function() {
-    return descript.get('defer');
-}
-```
-
-Lets go back to the `app/global/base.dust` file. Add `{deferScripts}` as the last item inside of the scripts block.
-
-```
-   {+scripts}
-        {urgentScripts}
-        {desktopScripts}
-        ...
-
-        {deferScripts}
-    {/scripts}
-```
-
-##Continue to Step 3
-
-When you're ready to continue to Step 3, run the following command:
+            if (descript.exists({src: 'mobile-first.js'})) {
+                descript.insertScript({src: 'mobile-first.js'}, function() {
+                    console.log('special script for category page, must run after first script');
+                });
+            }
+            return context;
+        },
+    ...
 
 ```
-git reset --hard HEAD && git clean -df && git checkout step-3-insert-new-script
+
+### View the Result
+
+Let's preview the project and see what order the scripts are executing in now.
+
+In terminal run `grunt preview`.
+
+Visit `http://0.0.0.0:9000/books/` to checkout a category page. Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
+
+
+##Continue to Step 4
+
+When you're ready to continue to Step 4, run the following command:
+
+```
+git reset --hard HEAD && git clean -df && git checkout step-4-create-custom-filter
 ```
 
-Then, follow the directions in the [README](https://github.com/mobify/workshop--descript/blob/step-3-insert-new-script/README.md) for the Step 3 branch.
+Then, follow the directions in the [README](https://github.com/mobify/workshop--descript/blob/step-4-create-custom-filter/README.md) for the Step 4 branch.
 
