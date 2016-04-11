@@ -76,8 +76,6 @@ function($, BaseView, template, Descript) {
         extend: BaseView,
         preProcess: function(context) {
             context = BaseView.preProcess(context);
-            console.log('in');
-
             var descript = Descript.init();
 
             if (descript.exists({src: 'mobile-first.js'})) {
