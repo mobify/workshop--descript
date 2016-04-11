@@ -1,12 +1,24 @@
 define([
     '$',
     'global/baseView',
-    'dust!pages/category/template'
+    'dust!pages/category/template',
+    'descript'
 ],
-function($, BaseView, template) {
+function($, BaseView, template, Descript) {
     return {
         template: template,
         extend: BaseView,
+        preProcess: function(context) {
+            context = BaseView.preProcess(context);
+            var descript = Descript.init();
+
+            if (descript.exists({src: 'mobile-first.js'})) {
+                descript.insertScript({src: 'mobile-first.js'}, function() {
+                    console.log('special script for category page, must run after first script');
+                });
+            }
+            return context;
+        },
         postProcess: function(context) {
             context = BaseView.postProcess(context);
 
@@ -17,7 +29,6 @@ function($, BaseView, template) {
 
             return context;
         },
-
         context: {
             templateName: 'category',
             title: function() {
