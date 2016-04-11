@@ -60,6 +60,10 @@ function($, ResizeImages, Descript, Utils, Defaults, Settings, header, footer, b
                 return !!$script.filter(query).length;
             });
 
+            descript.remove({
+                src: ['desktop-only.js']
+            });
+
             descript.add('urgent', {
                 src: ['mobile-first.js']
             });
