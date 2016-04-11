@@ -97,6 +97,8 @@ In terminal run `grunt preview`.
 
 Visit `http://training.merlinspotions.com/books/` to checkout a category page. Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
+<img src="/static/img/insert-script.png?raw=true" height="50">
+
 
 ##Continue to Step 4
 
