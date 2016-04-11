@@ -1,4 +1,4 @@
-# Step 1: Insert a Script
+# Step 3: Insert a New Script
 
 For this task we are going to insert a script immediately after another one. 
 We have a script that we'd like to insert only for the category pages, so we now have to include descript in `/app/pages/category/view.js`.
@@ -95,7 +95,7 @@ Let's preview the project and see what order the scripts are executing in now.
 
 In terminal run `grunt preview`.
 
-Visit `http://0.0.0.0:9000/books/` to checkout a category page. Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
+Visit `http://training.merlinspotions.com/books/` to checkout a category page. Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
 
 ##Continue to Step 4
