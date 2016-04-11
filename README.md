@@ -40,7 +40,7 @@ Let's preview the project and see what order the scripts are executing in now.
 In terminal run `grunt preview`.
 Open up the developer tools and look at the console. You may have to refresh the page with the developer tools open in order to see the console message.
 
-<img src="/mobify/workshop--descript/raw/step-4-create-custom-filter/static/img/insert-script.png?raw=true" height="100">
+<img src="/static/img/insert-script.png?raw=true" height="50">
 
 ##Finished!
 
